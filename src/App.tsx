@@ -1,14 +1,14 @@
-import {Title} from './components/title'
-import {Products} from './components/products'
-import './App.css'
+import { Title } from "./components/Title/title.tsx";
+import { Products } from "./components/products";
+import "./App.css";
 
-const App = () =>  {
+const App = () => {
   return (
     <>
-        <Title/>
-        <Products />
+      <Title />
+      <Products />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
