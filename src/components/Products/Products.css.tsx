@@ -13,7 +13,7 @@ export const ProductsContainer = styled.div`
 export const StyledProduct =  styled.div`
     width: 30%;
     @media (max-width: 800px) {
-        width: 45%
+        width: 40%
     }
     display: flex;
     flex-direction: column;
