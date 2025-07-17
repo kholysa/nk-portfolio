@@ -76,7 +76,7 @@ Please note these are hand printed and as a result there may be slight differenc
 `,Bh=Ht.div`
     width: 30%;
     @media (max-width: 800px) {
-        width: 45%
+        width: 40%
     }
     display: flex;
     flex-direction: column;
