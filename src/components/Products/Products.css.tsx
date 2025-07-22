@@ -5,7 +5,7 @@ export const ProductsContainer = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    width: 100%;
+    padding: 2rem;
     flex-wrap: wrap;
     gap: 2rem;
     

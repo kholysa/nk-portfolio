@@ -47,7 +47,7 @@ export const TitleContainer = styled.div`
     position: sticky;
     top: 0;
     box-shadow: #a8a2a2 1rem 1rem 2rem;
-    width: 98vw;
+    width: -webkit-fill-available;
     background: #ebe6e0;
     display: flex;
     justify-content: space-between;
