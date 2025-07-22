@@ -2,7 +2,7 @@ import styled from "styled-components";
 import {Title} from "./components/Title/title.tsx";
 import {Products} from "./components/Products";
 import "./App.css";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 
 const Content = styled.div`
     display: flex;
@@ -14,11 +14,10 @@ const Content = styled.div`
 `
 
 const App = () => {
-    const headerRef = useRef();
-    const [titleClassName, setTitleClassName] = useState<string>();
+    const [titleClassName, setTitleClassName] = useState<string>("");
 
     useEffect(() => {
-        const isSticky = (e) => {
+        const isSticky = () => {
             const scrollTop = window.scrollY;
             if (scrollTop >= 250) {
                 setTitleClassName("after-scroll");
@@ -34,7 +33,7 @@ const App = () => {
     }, []);
 
     return (
-        <Content ref={headerRef}>
+        <Content>
             <Title className={titleClassName}/>
             <Products/>
         </Content>
