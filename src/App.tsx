@@ -14,7 +14,7 @@ const Content = styled.div`
 `
 
 const App = () => {
-    const [titleClassName, setTitleClassName] = useState<string>("");
+    const [titleClassName, setTitleClassName] = useState<string>("before-scroll");
 
     useEffect(() => {
         const isSticky = () => {
