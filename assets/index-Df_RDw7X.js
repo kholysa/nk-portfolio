@@ -78,7 +78,7 @@ Error generating stack: `+i.message+`
     position: sticky;
     top: 0;
     box-shadow: #a8a2a2 1rem 1rem 2rem;
-    width: 98vw;
+    width: -webkit-fill-available;
     background: #ebe6e0;
     display: flex;
     justify-content: space-between;
@@ -104,7 +104,7 @@ Please note these are hand printed and as a result there may be slight differenc
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    width: 100%;
+    padding: 2rem;
     flex-wrap: wrap;
     gap: 2rem;
     
@@ -140,7 +140,6 @@ Please note these are hand printed and as a result there may be slight differenc
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 2rem 2rem 2rem;
     gap: 2rem;
 
 `,tm=()=>{const[o,a]=Ot.useState("before-scroll");return Ot.useEffect(()=>{const s=()=>{const d=window.scrollY;d>=250?a("after-scroll"):d<=175&&a("before-scroll")};return window.addEventListener("scroll",s),()=>{window.removeEventListener("scroll",s)}},[]),Qe.jsxs(em,{children:[Qe.jsx(Vh,{className:o}),Qe.jsx(bh,{})]})};Dp.createRoot(document.getElementById("root")).render(Qe.jsx(Ot.StrictMode,{children:Qe.jsx(tm,{})}));
