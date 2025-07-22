@@ -143,4 +143,4 @@ Please note these are hand printed and as a result there may be slight differenc
     padding: 0 2rem 2rem 2rem;
     gap: 2rem;
 
-`,tm=()=>{const[o,a]=Ot.useState("");return Ot.useEffect(()=>{const s=()=>{const d=window.scrollY;d>=250?a("after-scroll"):d<=175&&a("before-scroll")};return window.addEventListener("scroll",s),()=>{window.removeEventListener("scroll",s)}},[]),Qe.jsxs(em,{children:[Qe.jsx(Vh,{className:o}),Qe.jsx(bh,{})]})};Dp.createRoot(document.getElementById("root")).render(Qe.jsx(Ot.StrictMode,{children:Qe.jsx(tm,{})}));
+`,tm=()=>{const[o,a]=Ot.useState("before-scroll");return Ot.useEffect(()=>{const s=()=>{const d=window.scrollY;d>=250?a("after-scroll"):d<=175&&a("before-scroll")};return window.addEventListener("scroll",s),()=>{window.removeEventListener("scroll",s)}},[]),Qe.jsxs(em,{children:[Qe.jsx(Vh,{className:o}),Qe.jsx(bh,{})]})};Dp.createRoot(document.getElementById("root")).render(Qe.jsx(Ot.StrictMode,{children:Qe.jsx(tm,{})}));
