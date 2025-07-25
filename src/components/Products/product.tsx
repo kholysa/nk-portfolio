@@ -28,9 +28,8 @@ export const Product = ({
                 </ModalContent>
             </ModalContainer>
             <StyledProduct>
-                <StyledImage src={imageSource}  onClick={() => setIsModalOpen(true)}/>
+                <StyledImage src={imageSource} onClick={() => setIsModalOpen(true)}/>
                 <StyledProductTitle>{title}</StyledProductTitle>
-                {/*<StyledProductDescription>{description}</StyledProductDescription>*/}
             </StyledProduct>
         </>
     );
