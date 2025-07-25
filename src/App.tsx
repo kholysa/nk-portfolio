@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {Title} from "./components/Title/title.tsx";
 import {Products} from "./components/Products";
+import {Footer} from "./components/Footer/footer.tsx";
 import "./App.css";
 import {useEffect, useState} from "react";
 
@@ -35,6 +36,7 @@ const App = () => {
         <Content>
             <Title className={titleClassName}/>
             <Products/>
+            <Footer />
         </Content>
     );
 };

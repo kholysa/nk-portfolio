@@ -46,9 +46,9 @@ export const StyledProductDescription = styled.p`
     font-weight: 200;
 `
 
-export const ModalContainer = styled("div")<{isOpen: boolean}>`
-    visibility: ${props => props.isOpen ? "visible" : "hidden"};
-    opacity: ${props => props.isOpen ? "1" : "0"};
+export const ModalContainer = styled("div")<{$isOpen: boolean}>`
+    visibility: ${({ $isOpen }) => $isOpen ? 'visible' : 'hidden'};
+    opacity: ${({ $isOpen }) => $isOpen ? '1' : '0'};
     display: flex;
     position: fixed;
     justify-content: center;

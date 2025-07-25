@@ -20,7 +20,7 @@ export const Product = ({
     const [isModalOpen, setIsModalOpen] = useState(false);
     const {image: imageSource} = useImage(image)
     return (<>
-            <ModalContainer isOpen={isModalOpen} onClick={() => setIsModalOpen(false)}>
+            <ModalContainer $isOpen={isModalOpen} onClick={() => setIsModalOpen(false)}>
                 <ModalContent onClick={() => setIsModalOpen(true)}>
                     <StyledImage src={imageSource}/>
                     <StyledProductTitle>{title}</StyledProductTitle>
