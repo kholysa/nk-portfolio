@@ -45,3 +45,31 @@ export const StyledProductDescription = styled.p`
     font-style: italic;
     font-weight: 200;
 `
+
+export const ModalContainer = styled.div`
+    visibility: ${props => props.isOpen ? "visible" : "hidden"};
+    opacity: ${props => props.isOpen ? "1" : "0"};
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: 0.4s;
+    backdrop-filter: blur(5rem);
+`
+
+export const ModalContent = styled.div`
+    max-width: 30%;
+    z-index: 999;
+    @media (max-width: 800px) {
+        max-width: 70%;
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+`
