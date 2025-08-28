@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://kholysa.github.io/nk-portfolio",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
