@@ -22,6 +22,6 @@ export const FooterContainer = styled.div`
     flex-direction: column;
     background-color: #ebe6e0;
     border-top: black 1px solid;
-    width: 100%;
+    width: -webkit-fill-available;
     padding: 1rem;
 `
