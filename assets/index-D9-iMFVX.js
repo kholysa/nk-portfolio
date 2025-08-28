@@ -197,7 +197,7 @@ Please note these are hand printed and as a result there may be slight differenc
     flex-direction: column;
     background-color: #ebe6e0;
     border-top: black 1px solid;
-    width: 100%;
+    width: -webkit-fill-available;
     padding: 1rem;
 `,um=()=>pe.jsxs(om,{children:[pe.jsx(lm,{children:"Say Hello 🙂"}),pe.jsx(im,{children:"www.habibtiplease.com | habibtiblease@gmail.com"})]}),sm=Fe.div`
     display: flex;
