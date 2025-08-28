@@ -15,7 +15,7 @@ export const CustomPricingContainer = styled.div`
     align-items: center;
     justify-content: center;
     align-self: center;
-    padding: 2rem;
+    padding: 1rem;
     font-family: Montserrat, sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
