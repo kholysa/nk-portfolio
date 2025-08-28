@@ -112,7 +112,7 @@ Please note these are hand printed and as a result there may be slight differenc
     align-items: center;
     justify-content: center;
     align-self: center;
-    padding: 2rem;
+    padding: 1rem;
     font-family: Montserrat, sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
