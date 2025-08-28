@@ -1,5 +1,28 @@
 import styled from 'styled-components'
 
+export const CustomPricingContainer = styled.div`
+    width: 30%;
+    @media (max-width: 800px) {
+        width: 40%
+    }
+    background-color: #3bb371;
+    color: #e0feca;
+    height: fit-content;
+    border: 2px #e0feca;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    padding: 2rem;
+    font-family: Montserrat, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-weight: 400;
+    text-align: center;
+`
+
 export const ProductsContainer = styled.div`
     display: flex;
     flex-direction: row;
