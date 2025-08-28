@@ -1,4 +1,3 @@
-import * as React from "react";
 import {CustomPricingContainer} from "./Products.css.tsx";
 
 export const CustomPricingCard = () => {
