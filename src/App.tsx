@@ -4,6 +4,7 @@ import {Products} from "./components/Products";
 import {Footer} from "./components/Footer/footer.tsx";
 import "./App.css";
 import {useEffect, useState} from "react";
+import { Spotlight } from "./components/Spotlight/spotlight.tsx";
 
 const Content = styled.div`
     display: flex;
@@ -35,6 +36,7 @@ const App = () => {
     return (
         <Content>
             <Title className={titleClassName}/>
+            <Spotlight/>
             <Products/>
             <Footer />
         </Content>
