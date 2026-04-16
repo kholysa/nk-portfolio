@@ -5,10 +5,10 @@ export const CustomPricingContainer = styled.div`
   @media (max-width: 800px) {
     width: 40%;
   }
-  background-color: #3bb371;
-  color: #e0feca;
+  background-color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
   height: fit-content;
-  border: 2px #e0feca;
+  border: 2pxrgb (255, 255, 255);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -94,4 +94,11 @@ export const ModalContent = styled.div`
   align-items: center;
   gap: 1rem;
   padding: 1rem;
+`;
+
+export const ProductTitle = styled.h2`
+  font-family: Montserrat, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-weight: 400;
 `;

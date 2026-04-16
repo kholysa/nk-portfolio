@@ -46,9 +46,9 @@ export const Subtitle = styled.div`
 export const TitleContainer = styled.div`
     position: sticky;
     top: 0;
-    box-shadow: #a8a2a2 1rem 1rem 2rem;
+    box-shadow:rgb(148, 148, 148) 1rem 1rem 2rem;
     width: -webkit-fill-available;
-    background: #ebe6e0;
+    background:rgb(255, 255, 255);
     display: flex;
     justify-content: space-between;
     align-items: center;
