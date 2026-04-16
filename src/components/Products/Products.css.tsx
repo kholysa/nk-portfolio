@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
+const carouselItemWidth = `
+  flex: 0 0 auto;
+  width: clamp(220px, 28vw, 320px);
+`;
+
 export const CustomPricingContainer = styled.div`
-  width: 30%;
-  @media (max-width: 800px) {
-    width: 40%;
-  }
+  ${carouselItemWidth}
   background-color: rgb(255, 255, 255);
   color: rgb(255, 255, 255);
   height: fit-content;
@@ -24,19 +26,37 @@ export const CustomPricingContainer = styled.div`
 `;
 
 export const ProductsContainer = styled.div`
+  align-self: stretch;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: flex-start;
   padding: 2rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 2rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  touch-action: pan-y;
+  overscroll-behavior-x: contain;
+  &.is-dragging {
+    cursor: grabbing;
+    user-select: none;
+  }
+  scrollbar-width: thin;
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
 `;
 export const StyledProduct = styled.div`
-  width: 30%;
-  @media (max-width: 800px) {
-    width: 40%;
-  }
+  ${carouselItemWidth}
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,6 +68,8 @@ export const StyledImage = styled.img`
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
+  -webkit-user-drag: none;
+  user-select: none;
   border-radius: 0 100px 0 100px;
   @media (max-width: 800px) {
     border-radius: 0 50px 0 50px;
