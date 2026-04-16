@@ -1,51 +1,43 @@
-import { useEffect, useState } from "react";
 import {
   StyledImage,
   StyledProduct,
   StyledProductDescription,
   StyledProductTitle,
-  ModalContainer,
-  ModalContent,
 } from "./Products.css.tsx";
 import useImage from "../../hooks/useImage.tsx";
+
+export type ProductEntry = {
+  image_src: string;
+  title: string;
+  description: string;
+};
+
+export const ProductModalContent = ({ product }: { product: ProductEntry }) => {
+  const { image: imageSource } = useImage(product.image_src);
+  return (
+    <>
+      <StyledImage src={imageSource} alt={product.title} />
+      <StyledProductTitle>{product.title}</StyledProductTitle>
+      <StyledProductDescription>{product.description}</StyledProductDescription>
+    </>
+  );
+};
 
 export const Product = ({
   image,
   title,
-  description,
+  onOpen,
 }: {
   image: string;
   title: string;
-  description: string;
+  onOpen: () => void;
 }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const { image: imageSource } = useImage(image);
 
-  useEffect(() => {
-    if (!isModalOpen) return;
-    const previous = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = previous;
-    };
-  }, [isModalOpen]);
-
   return (
-    <>
-      <ModalContainer
-        $isOpen={isModalOpen}
-        onClick={() => setIsModalOpen(false)}
-      >
-        <ModalContent onClick={() => setIsModalOpen(true)}>
-          <StyledImage src={imageSource} />
-          <StyledProductTitle>{title}</StyledProductTitle>
-          <StyledProductDescription>{description}</StyledProductDescription>
-        </ModalContent>
-      </ModalContainer>
-      <StyledProduct>
-        <StyledImage src={imageSource} onClick={() => setIsModalOpen(true)} />
-        <StyledProductTitle>{title}</StyledProductTitle>
-      </StyledProduct>
-    </>
+    <StyledProduct>
+      <StyledImage src={imageSource} onClick={onOpen} alt={title} />
+      <StyledProductTitle onClick={onOpen}>{title}</StyledProductTitle>
+    </StyledProduct>
   );
 };

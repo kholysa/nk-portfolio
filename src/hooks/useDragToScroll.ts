@@ -1,7 +1,7 @@
 import { type RefObject, useEffect } from "react";
 
-/** Pixels of pointer movement before a gesture counts as a drag (not a click). */
-const DRAG_THRESHOLD = 6;
+/** Pixels of movement before horizontal drag / scroll starts (keeps taps/clicks on children working). */
+const DRAG_THRESHOLD = 14;
 
 /** Minimum scroll velocity (px/ms) to start momentum after release. */
 const MIN_MOMENTUM_VELOCITY = 0.015;
@@ -21,6 +21,7 @@ export function useDragToScroll(ref: RefObject<HTMLElement | null>) {
     let startX = 0;
     let startScrollLeft = 0;
     let dragged = false;
+    let captureActive = false;
 
     let lastMoveX = 0;
     let lastMoveT = 0;
@@ -43,17 +44,33 @@ export function useDragToScroll(ref: RefObject<HTMLElement | null>) {
       startX = e.clientX;
       startScrollLeft = el.scrollLeft;
       dragged = false;
+      captureActive = false;
       lastMoveX = e.clientX;
       lastMoveT = e.timeStamp;
       pointerVelMs = 0;
-      el.setPointerCapture(e.pointerId);
-      el.classList.add("is-dragging");
     };
 
     const onPointerMove = (e: PointerEvent) => {
       if (activePointerId === null || e.pointerId !== activePointerId) return;
       const dx = e.clientX - startX;
-      if (Math.abs(dx) > DRAG_THRESHOLD) dragged = true;
+
+      if (Math.abs(dx) <= DRAG_THRESHOLD) {
+        return;
+      }
+
+      if (!captureActive) {
+        try {
+          el.setPointerCapture(e.pointerId);
+        } catch {
+          /* e.g. pointer already released */
+        }
+        captureActive = true;
+        dragged = true;
+        el.classList.add("is-dragging");
+        lastMoveX = e.clientX;
+        lastMoveT = e.timeStamp;
+      }
+
       el.scrollLeft = startScrollLeft - dx;
 
       const dt = e.timeStamp - lastMoveT;
@@ -66,12 +83,15 @@ export function useDragToScroll(ref: RefObject<HTMLElement | null>) {
 
     const endPointer = (e: PointerEvent) => {
       if (activePointerId === null || e.pointerId !== activePointerId) return;
-      try {
-        el.releasePointerCapture(e.pointerId);
-      } catch {
-        /* already released */
+      if (captureActive) {
+        try {
+          el.releasePointerCapture(e.pointerId);
+        } catch {
+          /* already released */
+        }
       }
       activePointerId = null;
+      captureActive = false;
       el.classList.remove("is-dragging");
 
       if (dragged) {
@@ -86,7 +106,6 @@ export function useDragToScroll(ref: RefObject<HTMLElement | null>) {
         return;
       }
 
-      // scroll velocity (px/ms) = -pointer velocity (same relation as drag)
       let scrollVelMs = -pointerVelMs * MOMENTUM_GAIN;
       if (!dragged || Math.abs(scrollVelMs) < MIN_MOMENTUM_VELOCITY) {
         return;
@@ -103,7 +122,6 @@ export function useDragToScroll(ref: RefObject<HTMLElement | null>) {
         next = Math.max(0, Math.min(maxScroll, next));
         el.scrollLeft = next;
 
-        // Hit edge: kill momentum in that direction
         if (next <= 0 && scrollVelMs < 0) scrollVelMs = 0;
         if (next >= maxScroll && scrollVelMs > 0) scrollVelMs = 0;
 

@@ -4,7 +4,6 @@ import { Products } from "./components/Products";
 import { Footer } from "./components/Footer/footer.tsx";
 import "./App.css";
 import { useEffect, useState } from "react";
-import { Spotlight } from "./components/Spotlight/spotlight.tsx";
 import { HeaderImage } from "./components/HeaderImage/headerImage.tsx";
 
 const Content = styled.div`
@@ -38,7 +37,6 @@ const App = () => {
     <Content>
       <Title className={titleClassName} />
       <HeaderImage />
-      <Spotlight />
       <Products />
       <Footer />
     </Content>

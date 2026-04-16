@@ -40,7 +40,7 @@ export const ProductsContainer = styled.div`
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   cursor: grab;
-  touch-action: pan-y;
+  touch-action: manipulation;
   overscroll-behavior-x: contain;
   &.is-dragging {
     cursor: grabbing;
@@ -82,6 +82,7 @@ export const StyledProductTitle = styled.p`
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   font-weight: 400;
+  cursor: pointer;
 `;
 
 export const StyledProductDescription = styled.p`
@@ -93,6 +94,7 @@ export const StyledProductDescription = styled.p`
 export const ModalContainer = styled("div")<{ $isOpen: boolean }>`
   visibility: ${({ $isOpen }) => ($isOpen ? "visible" : "hidden")};
   opacity: ${({ $isOpen }) => ($isOpen ? "1" : "0")};
+  pointer-events: ${({ $isOpen }) => ($isOpen ? "auto" : "none")};
   display: flex;
   position: fixed;
   justify-content: center;
@@ -101,6 +103,7 @@ export const ModalContainer = styled("div")<{ $isOpen: boolean }>`
   height: 100%;
   top: 0;
   left: 0;
+  z-index: ${({ $isOpen }) => ($isOpen ? 1000 : 0)};
   transition: 0.4s;
   backdrop-filter: blur(5rem);
 `;
