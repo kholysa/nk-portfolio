@@ -25,6 +25,60 @@ export const CustomPricingContainer = styled.div`
   text-align: center;
 `;
 
+export const ShowcaseProductsContainer = styled.div`
+  align-self: stretch;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 2rem;
+`;
+
+export const ShowcaseProductRow = styled.div<{ $align: "left" | "right" }>`
+  display: flex;
+  width: 100%;
+  justify-content: ${({ $align }) =>
+    $align === "left" ? "flex-start" : "flex-end"};
+  padding-inline: clamp(1rem, 6vw, 5rem);
+`;
+
+export const ShowcaseProductContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  max-width: min(52rem, 100%);
+  width: 100%;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+`;
+
+export const ShowcaseProductVisual = styled.div`
+  flex: 0 0 auto;
+  width: clamp(220px, 28vw, 320px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+`;
+
+export const ShowcaseProductDetails = styled.div<{ $align: "left" | "right" }>`
+  flex: 1;
+  min-width: 0;
+  max-width: 28rem;
+  text-align: ${({ $align }) => ($align === "left" ? "left" : "right")};
+
+  @media (max-width: 700px) {
+    text-align: center;
+    max-width: 100%;
+  }
+`;
+
 export const ProductsContainer = styled.div`
   align-self: stretch;
   width: 100%;

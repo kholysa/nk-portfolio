@@ -1,6 +1,7 @@
 import HabibtiPleaseLogo from "../../assets/img/habibti_please.png";
 import SpotifyLogo from "../../assets/img/spotify_logo_bw.png";
 import AppleLogo from "../../assets/img/apple-logo-bw.png";
+import { Navigation } from "../Navigation/Navigation.tsx";
 import {
   MainTitle,
   SecondaryTitle,
@@ -37,6 +38,7 @@ export const Title = ({ className }: { className: string }) => {
           Product Line Sheet
         </SecondaryTitle>
         <Subtitle className={className}>Summer Collection | 2026</Subtitle>
+        <Navigation />
       </TitleColumn>
 
       <TitleSideRight>

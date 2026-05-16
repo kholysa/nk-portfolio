@@ -1,45 +1,17 @@
-import styled from "styled-components";
-import { Title } from "./components/Title/title.tsx";
-import { Products } from "./components/Products";
-import { Footer } from "./components/Footer/footer.tsx";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { useEffect, useState } from "react";
-import { HeaderImage } from "./components/HeaderImage/headerImage.tsx";
-
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 100%;
-`;
+import { AppLayout } from "./layouts/AppLayout.tsx";
+import { CollectionPage } from "./pages/CollectionPage.tsx";
+import { HomePage } from "./pages/HomePage.tsx";
 
 const App = () => {
-  const [titleClassName, setTitleClassName] = useState<string>("before-scroll");
-
-  useEffect(() => {
-    const isSticky = () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop >= 250) {
-        setTitleClassName("after-scroll");
-      } else if (scrollTop <= 175) {
-        setTitleClassName("before-scroll");
-      }
-    };
-
-    window.addEventListener("scroll", isSticky);
-    return () => {
-      window.removeEventListener("scroll", isSticky);
-    };
-  }, []);
-
   return (
-    <Content>
-      <Title className={titleClassName} />
-      <HeaderImage />
-      <Products />
-      <Footer />
-    </Content>
+    <Routes>
+      <Route element={<AppLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="collection" element={<CollectionPage />} />
+      </Route>
+    </Routes>
   );
 };
 

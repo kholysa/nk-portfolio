@@ -17,8 +17,12 @@ export const TitleContainer = styled.div`
   transition: 0.4s;
 
   @media (max-width: 900px) {
-    flex-direction: column;
-    gap: 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+    padding: 0.65rem 0.75rem;
   }
 
   &.after-scroll {
@@ -26,6 +30,11 @@ export const TitleContainer = styled.div`
     font-size: 0.5rem;
     gap: 0.75rem;
     padding: 0.75rem 1rem;
+
+    @media (max-width: 900px) {
+      gap: 0.35rem 0.5rem;
+      padding: 0.5rem 0.75rem;
+    }
   }
 `;
 
@@ -39,8 +48,11 @@ export const TitleSideLeft = styled.div`
   min-width: 0;
 
   @media (max-width: 900px) {
-    align-items: center;
-    width: 100%;
+    grid-column: 1;
+    grid-row: 1;
+    flex: none;
+    width: auto;
+    align-items: flex-start;
   }
 `;
 
@@ -54,8 +66,11 @@ export const TitleSideRight = styled.div`
   min-width: 0;
 
   @media (max-width: 900px) {
-    align-items: center;
-    width: 100%;
+    grid-column: 2;
+    grid-row: 1;
+    flex: none;
+    width: auto;
+    align-items: flex-end;
   }
 `;
 
@@ -69,6 +84,13 @@ export const TitleColumn = styled.div`
   text-align: center;
   padding: 0 0.75rem;
   min-width: 0;
+
+  @media (max-width: 900px) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    gap: 0.35rem;
+    padding: 0;
+  }
 
   @media (max-width: 800px) {
     gap: 0.5rem;
@@ -117,7 +139,16 @@ export const TitlePodcastLinks = styled.div`
   }
 
   @media (max-width: 900px) {
-    justify-content: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+
+    &.before-scroll a {
+      max-width: 56px;
+    }
+
+    &.after-scroll a {
+      max-width: 36px;
+    }
   }
 `;
 
@@ -133,6 +164,15 @@ export const MainTitle = styled.div`
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
+
+  @media (max-width: 900px) {
+    &.before-scroll {
+      font-size: 1.1rem;
+    }
+    &.after-scroll {
+      font-size: 0.65rem;
+    }
+  }
 `;
 
 export const SecondaryTitle = styled.div`
@@ -146,6 +186,17 @@ export const SecondaryTitle = styled.div`
   }
   &.after-scroll {
     font-size: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    letter-spacing: 0.35rem;
+
+    &.before-scroll {
+      font-size: 1.35rem;
+    }
+    &.after-scroll {
+      font-size: 0.85rem;
+    }
   }
 `;
 
@@ -161,6 +212,15 @@ export const Subtitle = styled.div`
   &.after-scroll {
     font-size: 0.75rem;
   }
+
+  @media (max-width: 900px) {
+    &.before-scroll {
+      font-size: 0.85rem;
+    }
+    &.after-scroll {
+      font-size: 0.6rem;
+    }
+  }
 `;
 
 export const TitleSpotlightImage = styled.img`
@@ -174,6 +234,15 @@ export const TitleSpotlightImage = styled.img`
   &.after-scroll {
     max-width: 72px;
   }
+
+  @media (max-width: 900px) {
+    &.before-scroll {
+      max-width: 72px;
+    }
+    &.after-scroll {
+      max-width: 48px;
+    }
+  }
 `;
 
 export const TitlePodcastLogo = styled.img`
@@ -186,5 +255,14 @@ export const TitlePodcastLogo = styled.img`
   }
   &.after-scroll {
     max-width: 40px;
+  }
+
+  @media (max-width: 900px) {
+    &.before-scroll {
+      max-width: 48px;
+    }
+    &.after-scroll {
+      max-width: 32px;
+    }
   }
 `;

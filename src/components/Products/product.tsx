@@ -1,4 +1,7 @@
 import {
+  ShowcaseProductContent,
+  ShowcaseProductDetails,
+  ShowcaseProductVisual,
   StyledImage,
   StyledProduct,
   StyledProductDescription,
@@ -39,5 +42,50 @@ export const Product = ({
       <StyledImage src={imageSource} onClick={onOpen} alt={title} />
       <StyledProductTitle onClick={onOpen}>{title}</StyledProductTitle>
     </StyledProduct>
+  );
+};
+
+export const ShowcaseProduct = ({
+  product,
+  align,
+  onOpen,
+}: {
+  product: ProductEntry;
+  align: "left" | "right";
+  onOpen: () => void;
+}) => {
+  const { image: imageSource } = useImage(product.image_src);
+
+  const visual = (
+    <ShowcaseProductVisual>
+      <StyledImage
+        src={imageSource}
+        onClick={onOpen}
+        alt={product.title}
+      />
+      <StyledProductTitle onClick={onOpen}>{product.title}</StyledProductTitle>
+    </ShowcaseProductVisual>
+  );
+
+  const details = (
+    <ShowcaseProductDetails $align={align}>
+      <StyledProductDescription>{product.description}</StyledProductDescription>
+    </ShowcaseProductDetails>
+  );
+
+  return (
+    <ShowcaseProductContent>
+      {align === "left" ? (
+        <>
+          {visual}
+          {details}
+        </>
+      ) : (
+        <>
+          {details}
+          {visual}
+        </>
+      )}
+    </ShowcaseProductContent>
   );
 };
