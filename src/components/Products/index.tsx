@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import ProductsJson from "./products.json";
 import ShowcaseJson from "./showcase.json";
 import {
+  ModalCloseButton,
   ModalContainer,
   ModalContent,
   ProductsContainer,
@@ -60,6 +61,13 @@ export const Products = ({
       >
         {selectedIndex !== null && (
           <ModalContent onClick={(e) => e.stopPropagation()}>
+            <ModalCloseButton
+              type="button"
+              aria-label="Close"
+              onClick={() => setSelectedIndex(null)}
+            >
+              ×
+            </ModalCloseButton>
             <ProductModalContent
               key={selectedIndex}
               product={products[selectedIndex]}

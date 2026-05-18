@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { MarkdownContent } from "../Markdown/MarkdownContent.tsx";
 import {
   ModalGallery,
   ModalMainImage,
@@ -9,7 +10,6 @@ import {
   ShowcaseProductVisual,
   StyledImage,
   StyledProduct,
-  StyledProductDescription,
   StyledProductTitle,
 } from "./Products.css.tsx";
 import useImage from "../../hooks/useImage.tsx";
@@ -89,7 +89,7 @@ export const ProductModalContent = ({ product }: { product: ProductEntry }) => {
         )}
       </ModalGallery>
       <StyledProductTitle>{product.title}</StyledProductTitle>
-      <StyledProductDescription>{product.description}</StyledProductDescription>
+      <MarkdownContent>{product.description}</MarkdownContent>
     </>
   );
 };
@@ -137,7 +137,7 @@ export const ShowcaseProduct = ({
 
   const details = (
     <ShowcaseProductDetails $align={align}>
-      <StyledProductDescription>{product.description}</StyledProductDescription>
+      <MarkdownContent>{product.description}</MarkdownContent>
     </ShowcaseProductDetails>
   );
 

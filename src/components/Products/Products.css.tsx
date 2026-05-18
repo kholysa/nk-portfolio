@@ -168,12 +168,6 @@ export const StyledProductTitle = styled.p`
   cursor: pointer;
 `;
 
-export const StyledProductDescription = styled.p`
-  font-family: Montserrat, sans-serif;
-  font-style: italic;
-  font-weight: 200;
-`;
-
 export const ModalContainer = styled("div")<{ $isOpen: boolean }>`
   visibility: ${({ $isOpen }) => ($isOpen ? "visible" : "hidden")};
   opacity: ${({ $isOpen }) => ($isOpen ? "1" : "0")};
@@ -181,7 +175,7 @@ export const ModalContainer = styled("div")<{ $isOpen: boolean }>`
   display: flex;
   position: fixed;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   height: 100%;
   top: 0;
@@ -189,16 +183,49 @@ export const ModalContainer = styled("div")<{ $isOpen: boolean }>`
   z-index: ${({ $isOpen }) => ($isOpen ? 1000 : 0)};
   transition: 0.4s;
   backdrop-filter: blur(5rem);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding: 1.5rem 1rem;
+  box-sizing: border-box;
 `;
 
 export const ModalContent = styled.div`
+  position: relative;
   max-width: min(32rem, 90vw);
+  width: 100%;
+  margin: auto;
+  flex-shrink: 0;
   z-index: 999;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  padding: 1rem;
+  padding: 2.5rem 1rem 1rem;
+`;
+
+export const ModalCloseButton = styled.button`
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: Montserrat, sans-serif;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: black;
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.6;
+  }
 `;
 
 export const ModalGallery = styled.div`
