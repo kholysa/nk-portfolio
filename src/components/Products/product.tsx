@@ -142,18 +142,9 @@ export const ShowcaseProduct = ({
   );
 
   return (
-    <ShowcaseProductContent>
-      {align === "left" ? (
-        <>
-          {visual}
-          {details}
-        </>
-      ) : (
-        <>
-          {details}
-          {visual}
-        </>
-      )}
+    <ShowcaseProductContent $align={align}>
+      {visual}
+      {details}
     </ShowcaseProductContent>
   );
 };

@@ -1,14 +1,12 @@
 [
   {
-    "image_src": "header_image_hats",
-    "gallery_images": ["allahs_fav_arch_camo", "celine_bureau_artiste"],
+    "image_src": "indigenous_disability_canada",
     "title": "Indigenous Disability Canada",
     "description": "This is a custom hat designed for Indigenous Disability Canada."
   },
   {
     "image_src": "celine_bureau_artiste",
-    "gallery_images": ["header_image_hats"],
-    "title": "Artiste en Residences",
+    "title": "Artiste en Residences - Celine Bureau",
     "description": "This is a custom hat designed for Celine Bureau."
   }
 ]

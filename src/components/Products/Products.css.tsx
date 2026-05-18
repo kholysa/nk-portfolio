@@ -43,13 +43,19 @@ export const ShowcaseProductRow = styled.div<{ $align: "left" | "right" }>`
   padding-inline: clamp(1rem, 6vw, 5rem);
 `;
 
-export const ShowcaseProductContent = styled.div`
+export const ShowcaseProductContent = styled.div<{ $align: "left" | "right" }>`
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: clamp(1.5rem, 4vw, 3rem);
   max-width: min(52rem, 100%);
   width: 100%;
+
+  ${({ $align }) =>
+    $align === "right" &&
+    `
+    flex-direction: row-reverse;
+  `}
 
   @media (max-width: 700px) {
     flex-direction: column;
@@ -116,6 +122,29 @@ export const StyledProduct = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 1.2rem;
+`;
+
+export const ProductsGridContainer = styled.div`
+  align-self: center;
+  width: 100%;
+  display: grid;
+  @media (max-width: 800px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+
+  ${StyledProduct} {
+    width: 100%;
+    flex: none;
+  }
+
+  ${CustomPricingContainer} {
+    width: 100%;
+    flex: none;
+  }
 `;
 
 export const StyledImage = styled.img`
@@ -210,7 +239,9 @@ export const ModalThumbnail = styled.button<{ $active: boolean }>`
   cursor: pointer;
   overflow: hidden;
   opacity: ${({ $active }) => ($active ? 1 : 0.65)};
-  transition: opacity 0.2s, border-color 0.2s;
+  transition:
+    opacity 0.2s,
+    border-color 0.2s;
 
   &:hover {
     opacity: 1;

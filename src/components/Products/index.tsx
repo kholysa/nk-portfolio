@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import ProductsJson from "./products.json";
+import ShowcaseJson from "./showcase.json";
 import {
   ModalContainer,
   ModalContent,
   ProductsContainer,
+  ProductsGridContainer,
   ProductTitle,
   ShowcaseProductRow,
   ShowcaseProductsContainer,
@@ -17,7 +19,7 @@ type ProductsProps = {
   limit?: number;
   showCustomCard?: boolean;
   title?: string;
-  layout?: "carousel" | "alternating";
+  layout?: "carousel" | "alternating" | "grid";
 };
 
 export const Products = ({
@@ -30,8 +32,11 @@ export const Products = ({
     ? ProductsJson.slice(0, limit)
     : ProductsJson;
 
+  const showcaseProducts: ProductEntry[] = ShowcaseJson;
+
   const scrollRef = useRef<HTMLDivElement>(null);
   const isAlternating = layout === "alternating";
+  const isGrid = layout === "grid";
   useDragToScroll(scrollRef);
 
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -65,19 +70,31 @@ export const Products = ({
 
       {isAlternating ? (
         <ShowcaseProductsContainer>
-          {products.map((prd, index) => {
+          {showcaseProducts.map((prd, index) => {
             const align = index % 2 === 0 ? "left" : "right";
             return (
               <ShowcaseProductRow key={`${prd.title}-${index}`} $align={align}>
                 <ShowcaseProduct
                   product={prd}
                   align={align}
-                  onOpen={() => setSelectedIndex(index)}
+                  onOpen={() => {}}
                 />
               </ShowcaseProductRow>
             );
           })}
         </ShowcaseProductsContainer>
+      ) : isGrid ? (
+        <ProductsGridContainer>
+          {products.map((prd, index) => (
+            <Product
+              key={`${prd.title}-${index}`}
+              image={prd.image_src}
+              title={prd.title}
+              onOpen={() => setSelectedIndex(index)}
+            />
+          ))}
+          {showCustomCard && <CustomPricingCard />}
+        </ProductsGridContainer>
       ) : (
         <ProductsContainer ref={scrollRef}>
           {products.map((prd, index) => (
