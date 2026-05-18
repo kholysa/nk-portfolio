@@ -1,4 +1,9 @@
+import { useEffect, useState } from "react";
 import {
+  ModalGallery,
+  ModalMainImage,
+  ModalThumbnail,
+  ModalThumbnails,
   ShowcaseProductContent,
   ShowcaseProductDetails,
   ShowcaseProductVisual,
@@ -13,13 +18,76 @@ export type ProductEntry = {
   image_src: string;
   title: string;
   description: string;
+  gallery_images?: string[];
+};
+
+export function getProductImages(product: ProductEntry): string[] {
+  return [
+    ...new Set([product.image_src, ...(product.gallery_images ?? [])]),
+  ];
+}
+
+const ProductImage = ({
+  fileName,
+  alt,
+  onClick,
+  className,
+}: {
+  fileName: string;
+  alt: string;
+  onClick?: () => void;
+  className?: string;
+}) => {
+  const { image } = useImage(fileName);
+  if (!image) return null;
+
+  return (
+    <StyledImage
+      src={image}
+      alt={alt}
+      onClick={onClick}
+      className={className}
+    />
+  );
 };
 
 export const ProductModalContent = ({ product }: { product: ProductEntry }) => {
-  const { image: imageSource } = useImage(product.image_src);
+  const images = getProductImages(product);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [product.image_src, product.gallery_images]);
+
   return (
     <>
-      <StyledImage src={imageSource} alt={product.title} />
+      <ModalGallery>
+        <ModalMainImage>
+          <ProductImage
+            fileName={images[activeIndex]}
+            alt={`${product.title} — view ${activeIndex + 1}`}
+          />
+        </ModalMainImage>
+        {images.length > 1 && (
+          <ModalThumbnails>
+            {images.map((fileName, index) => (
+              <ModalThumbnail
+                key={`${fileName}-${index}`}
+                type="button"
+                $active={index === activeIndex}
+                onClick={() => setActiveIndex(index)}
+                aria-label={`View image ${index + 1} of ${images.length}`}
+                aria-current={index === activeIndex}
+              >
+                <ProductImage
+                  fileName={fileName}
+                  alt={`${product.title} thumbnail ${index + 1}`}
+                />
+              </ModalThumbnail>
+            ))}
+          </ModalThumbnails>
+        )}
+      </ModalGallery>
       <StyledProductTitle>{product.title}</StyledProductTitle>
       <StyledProductDescription>{product.description}</StyledProductDescription>
     </>

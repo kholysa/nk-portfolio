@@ -163,16 +163,68 @@ export const ModalContainer = styled("div")<{ $isOpen: boolean }>`
 `;
 
 export const ModalContent = styled.div`
-  max-width: 30%;
+  max-width: min(32rem, 90vw);
   z-index: 999;
-  @media (max-width: 800px) {
-    max-width: 70%;
-  }
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
   padding: 1rem;
+`;
+
+export const ModalGallery = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+`;
+
+export const ModalMainImage = styled.div`
+  width: 100%;
+  max-width: 20rem;
+
+  img {
+    width: 100%;
+    cursor: default;
+  }
+`;
+
+export const ModalThumbnails = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+`;
+
+export const ModalThumbnail = styled.button<{ $active: boolean }>`
+  flex: 0 0 auto;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+  border: 2px solid
+    ${({ $active }) => ($active ? "black" : "rgba(0, 0, 0, 0.2)")};
+  border-radius: 0 18px 0 18px;
+  background: white;
+  cursor: pointer;
+  overflow: hidden;
+  opacity: ${({ $active }) => ($active ? 1 : 0.65)};
+  transition: opacity 0.2s, border-color 0.2s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+  }
 `;
 
 export const ProductTitle = styled.h2`

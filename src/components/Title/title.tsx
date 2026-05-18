@@ -4,7 +4,6 @@ import AppleLogo from "../../assets/img/apple-logo-bw.png";
 import { Navigation } from "../Navigation/Navigation.tsx";
 import {
   MainTitle,
-  SecondaryTitle,
   Subtitle,
   TitleColumn,
   TitleContainer,
@@ -34,9 +33,6 @@ export const Title = ({ className }: { className: string }) => {
 
       <TitleColumn>
         <MainTitle className={className}>Habibti Please</MainTitle>
-        <SecondaryTitle className={className}>
-          Product Line Sheet
-        </SecondaryTitle>
         <Subtitle className={className}>Summer Collection | 2026</Subtitle>
         <Navigation />
       </TitleColumn>

@@ -55,7 +55,10 @@ export const Products = ({
       >
         {selectedIndex !== null && (
           <ModalContent onClick={(e) => e.stopPropagation()}>
-            <ProductModalContent product={products[selectedIndex]} />
+            <ProductModalContent
+              key={selectedIndex}
+              product={products[selectedIndex]}
+            />
           </ModalContent>
         )}
       </ModalContainer>

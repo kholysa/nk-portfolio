@@ -175,7 +175,7 @@ export const MainTitle = styled.div`
   }
 `;
 
-export const SecondaryTitle = styled.div`
+export const Subtitle = styled.div`
   font-family: Lato, sans-serif;
   font-weight: 550;
   letter-spacing: 0.7rem;
@@ -189,36 +189,11 @@ export const SecondaryTitle = styled.div`
   }
 
   @media (max-width: 900px) {
-    letter-spacing: 0.35rem;
-
     &.before-scroll {
       font-size: 1.35rem;
     }
     &.after-scroll {
       font-size: 0.85rem;
-    }
-  }
-`;
-
-export const Subtitle = styled.div`
-  font-family: Montserrat, sans-serif;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.2rem;
-  transition: 0.4s;
-  &.before-scroll {
-    font-size: 1.25rem;
-  }
-  &.after-scroll {
-    font-size: 0.75rem;
-  }
-
-  @media (max-width: 900px) {
-    &.before-scroll {
-      font-size: 0.85rem;
-    }
-    &.after-scroll {
-      font-size: 0.6rem;
     }
   }
 `;
