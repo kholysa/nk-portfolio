@@ -6,7 +6,7 @@ export const AboutUs = () => {
       <AboutTitle>About us</AboutTitle>
       <AboutText>
         Habibti Please is a cultural project by Moroccan Pakistani cultural
-        worker, researcher, and organizer  Nashwa Lina Khan. The phrase habibti
+        worker, researcher, and organizer Nashwa Lina Khan. The phrase habibti
         is an Arabic term of endearment meaning"my love, " "my dear," "my
         darling," or "my beloved," specifically used when speaking to a female.
         Habibti Please began as a cultural and political riff, a playful nod to
